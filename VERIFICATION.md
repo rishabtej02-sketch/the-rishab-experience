@@ -1,4 +1,4 @@
-# Local verification
+# Portfolio verification
 
 The portfolio has a working production build and local preview at `http://127.0.0.1:3000`.
 
@@ -44,9 +44,21 @@ The practical mobile performance target of 90 was not reached in this local run.
 
 The preview is deliberately `noindex, nofollow`, which lowers the SEO score. Enable indexing only for an approved production release, and configure the actual canonical domain and sitemap then.
 
+## Vercel preview
+
+Verified on November 23, 2026 after the user renewed team authorization:
+
+- URL: https://the-rishab-experience-gtdo3gxdt-agency-one.vercel.app
+- Project: `the-rishab-experience` in `agency-one`.
+- Deployment: `dpl_CouBZuXjDG2vAox2DGnccDJ65Jos`; READY, preview (`target: null`), no aliases.
+- Deployed source: `0e18f126949e40fa8cf8e341e6ddd3a5f7a7e4ca`. Next.js, Node 24; build phase approximately 57 seconds.
+- Authenticated hosted checks: homepage, recruiter profile, and all five case studies returned HTTP 200 with expected page titles. All three CVs returned HTTP 200, `application/pdf`, and PDF headers.
+- Homepage metadata retains `noindex, nofollow`. Vercel deployment protection remains enabled; viewing may require signing in.
+- An initial request unexpectedly returned a production target despite requesting preview. It was canceled before completion. The successful preview omitted the API target field, as documented. No production deployment completed or domain was assigned.
+
 ## Publication and content limitations
 
-- Vercel preview deployment is blocked by a 403 team authorization error for the connected `agency-one` scope. No remote deployment or production-domain publication has been made.
+- The Vercel preview is available for review. Production-domain publication still requires Rishab's approval.
 - The GitHub connector identifies the account but returns no accessible repositories. Source control is local; no remote repository is claimed.
 - No public email address has been approved. LinkedIn is the working contact CTA; GitHub links to the connected account.
 - Hyderabad Pickleball Association, Next Step HR, and Austridge are clearly labeled project overviews. Dates, formal titles, tool details, and numerical results remain to be confirmed.

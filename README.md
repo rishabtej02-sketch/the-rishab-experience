@@ -67,9 +67,11 @@ See [VERIFICATION.md](VERIFICATION.md) for measured results and remaining public
 
 ## Deployment
 
-Use a new Vercel project named `the-rishab-experience`, with the Next.js framework preset and Node 24. Build command: `npm run build`. Upload source plus the lockfile and `public/`; exclude `tmp/`, `.next/`, `node_modules/`, original CVs, and local reports.
+The Vercel project `the-rishab-experience` exists in the `agency-one` team, with the Next.js framework preset and Node 24. Build command: `npm run build`. Upload source plus the lockfile and `public/`; exclude `tmp/`, `.next/`, `node_modules/`, original CVs, and local reports.
 
-Deploy a **preview** first, without a production domain or promotion. The connected Vercel scope initially requires team authorization. Do not claim a deployment exists until Vercel reports READY. Production publishing requires Rishab’s approval.
+The [protected preview](https://the-rishab-experience-gtdo3gxdt-agency-one.vercel.app) is READY, deployed from source commit `0e18f12` and verified on November 23, 2026. Vercel sign-in may be required. See `VERIFICATION.md` for deployment and hosted-check details. Source control remains local; no GitHub repository is connected.
+
+Deploy future **previews** without a production domain or promotion. With the deployment REST API, omit `target` for a preview and verify that the response target is null. Production publishing requires Rishab’s approval.
 
 Preview metadata defaults to `noindex, nofollow`. Before an approved production launch, set `PORTFOLIO_INDEXABLE=true`, configure the canonical domain/metadata base and sitemap, verify contact details and the three brief-only project overviews, and repeat the production checks. Do not add a guessed domain.
 
