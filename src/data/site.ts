@@ -1,4 +1,3 @@
-export const portfolioName = "the-rishab-experience";
 export const portfolioOrigin = "https://the-rishab-experience.vercel.app";
 
 const deployment = process.env.VERCEL_ENV;
