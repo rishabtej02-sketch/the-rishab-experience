@@ -5,6 +5,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ProcessExplorer } from "@/components/ProcessExplorer";
 import { Footer } from "@/components/Footer";
 import { disciplines, projects } from "@/data/portfolio";
+import { portfolioName } from "@/data/site";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
       <main id="main">
         <section className="hero section-pad" aria-labelledby="hero-title">
           <div className="hero-topline">
-            <span>THE RISHAB EXPERIENCE</span>
+            <span>{portfolioName}</span>
             <span>STRATEGY × TECHNOLOGY × PEOPLE</span>
           </div>
           <h1 id="hero-title" className="hero-title" aria-label="Rishab Tej">
