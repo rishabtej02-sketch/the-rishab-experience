@@ -6,6 +6,15 @@ import { ProjectArt } from "@/components/ProjectArt";
 import { Footer } from "@/components/Footer";
 import { MotionShell } from "@/components/MotionShell";
 import { CaseExplorer } from "@/components/CaseExplorer";
+import { ProjectEvidence } from "@/components/ProjectEvidence";
+
+const contextLabels = {
+  brief: "Project overview · details in progress",
+  cv: "CV-supported case study",
+  documented: "Project records available",
+  repository: "Academic project · source available",
+} satisfies Record<(typeof projects)[number]["status"], string>;
+
 export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }));
 }
@@ -19,6 +28,7 @@ export async function generateMetadata({
   return {
     title: project?.name ?? "Project not found",
     description: project?.summary,
+    alternates: project ? { canonical: `/work/${project.slug}` } : undefined,
   };
 }
 export default async function CaseStudy({
@@ -44,6 +54,21 @@ export default async function CaseStudy({
           </div>
           <h1>{p.title}</h1>
           <p className="case-intro">{p.summary}</p>
+          {p.evidence?.video && (
+            <a className="text-button case-media-link" href="#case-demo">
+              Watch the demo <span aria-hidden="true">↓</span>
+            </a>
+          )}
+          {p.slug === "narrativex" && (
+            <a
+              className="text-button case-media-link"
+              href="https://narrativexmedia.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit the website I built <span aria-hidden="true">↗</span>
+            </a>
+          )}
           <div className="case-facts">
             <div>
               <span className="eyebrow">MY ROLE</span>
@@ -55,11 +80,7 @@ export default async function CaseStudy({
             </div>
             <div>
               <span className="eyebrow">CONTEXT</span>
-              <p>
-                {p.status === "cv"
-                  ? "CV-supported case study"
-                  : "Project overview · details in progress"}
-              </p>
+              <p>{contextLabels[p.status]}</p>
             </div>
           </div>
         </section>
@@ -105,15 +126,31 @@ export default async function CaseStudy({
             </div>
           </div>
         </section>
+        {p.roleScope && (
+          <section
+            className="case-section section-pad approach-section"
+            aria-labelledby="role-scope-title"
+          >
+            <h2 id="role-scope-title">Project Coordinator remit</h2>
+            <div>
+              {p.roleScope.map(({ title, body }) => (
+                <article className="case-scope-item" key={title}>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
         {(p.slug === "narrativex" || p.slug === "creative-scoring") && (
           <CaseExplorer slug={p.slug} />
         )}
         <section className="outcome-section section-pad">
           <div className="section-kicker">
             <span>
-              {p.status === "cv"
-                ? "REPORTED OUTCOMES & SCOPE"
-                : "AREAS OF CONTRIBUTION"}
+              {p.status === "brief"
+                ? "AREAS OF CONTRIBUTION"
+                : "REPORTED OUTCOMES & SCOPE"}
             </span>
             <span>{p.name.toUpperCase()}</span>
           </div>
@@ -127,6 +164,7 @@ export default async function CaseStudy({
           </div>
           <p className="source-note">{p.source}</p>
         </section>
+        {p.evidence && <ProjectEvidence {...p.evidence} />}
         <section className="takeaway section-pad">
           <span className="eyebrow">THE TAKEAWAY</span>
           <h2>{p.takeaway}</h2>

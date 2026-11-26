@@ -554,6 +554,61 @@ summary:focus-visible,
   background: #212522;
   color: #e9f0df;
 }
+.project-art.rockwell {
+  background: #1e313e;
+  color: #e4f0f8;
+}
+.project-art.metalabs {
+  background: #32273d;
+  color: #f2e9f5;
+}
+.internship-art-mark {
+  position: absolute;
+  inset: 17% 12%;
+  display: grid;
+  place-content: center;
+}
+.rockwell-mark {
+  inset: 50% auto auto 50%;
+  width: min(55%, 215px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) rotate(-13deg);
+}
+.rockwell-mark i {
+  position: absolute;
+  inset: 0;
+  border: 1px solid #9fbdcd;
+  border-radius: 50%;
+}
+.rockwell-mark i:nth-child(2) {
+  inset: 12%;
+}
+.rockwell-mark i:nth-child(3) {
+  inset: 24%;
+}
+.rockwell-mark i:nth-child(4) {
+  inset: 36%;
+  border-radius: 16%;
+  background: #b8d9ea;
+  transform: rotate(45deg);
+}
+.metalabs-mark {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  max-width: 30rem;
+  margin-inline: auto;
+}
+.metalabs-mark span {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 3.75rem;
+  padding: 0.5rem 0.35rem;
+  overflow-wrap: anywhere;
+  text-align: center;
+  font-size: clamp(0.73rem, 1.8vw, 1.3rem);
+  border: 1px solid #afa1b7;
+}
 .art-topline,
 .art-bottomline {
   position: absolute;
@@ -1132,6 +1187,10 @@ summary:focus-visible,
   max-width: 650px;
   margin-top: 30px;
 }
+.case-media-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+}
 .case-facts {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1172,6 +1231,94 @@ summary:focus-visible,
   font-size: 11px;
   margin-top: 10px;
 }
+.case-evidence {
+  padding-top: clamp(3rem, 7vw, 5.5rem);
+  padding-bottom: clamp(3rem, 7vw, 5.5rem);
+  border-bottom: 1px solid var(--line);
+}
+.case-evidence h2 {
+  font-size: clamp(1.9rem, 4.3vw, 3.4rem);
+  margin-bottom: 1.75rem;
+}
+.evidence-video {
+  max-width: 64rem;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  scroll-margin-top: 6rem;
+}
+.evidence-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #0c1117;
+  border: 1px solid var(--line);
+}
+.evidence-video figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.evidence-grid,
+.evidence-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+}
+.evidence-figure {
+  margin: 0;
+  min-width: 0;
+}
+.evidence-image {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  background: #151a20;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.evidence-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+}
+.evidence-figure h3 {
+  font-size: 1.2rem;
+  margin: 0.9rem 0 0.35rem;
+}
+.evidence-figure p,
+.evidence-links p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.evidence-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.evidence-grid + .evidence-links {
+  margin-top: 2.25rem;
+}
+.evidence-links li {
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+.evidence-links a,
+.experience-source,
+.volunteer-source a {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.evidence-links p {
+  margin-top: 0.35rem;
+}
+@media (max-width: 680px) {
+  .evidence-grid,
+  .evidence-links {
+    grid-template-columns: 1fr;
+  }
+}
 .case-section {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -1201,15 +1348,20 @@ summary:focus-visible,
   font-size: 12px;
   padding-top: 6px;
 }
-.approach-step h3 {
+.approach-step h3,
+.case-scope-item h3 {
   font-size: 29px;
   letter-spacing: -0.04em;
   line-height: 1.2;
   margin-bottom: 15px;
 }
-.approach-step p {
+.approach-step p,
+.case-scope-item p {
   font-size: 17px;
   line-height: 1.8;
+}
+.case-scope-item + .case-scope-item {
+  margin-top: 2rem;
 }
 .tools-row {
   padding-top: 15px;
@@ -1297,6 +1449,7 @@ summary:focus-visible,
 }
 .profile-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
   align-items: center;
   margin-top: 28px;
@@ -1336,6 +1489,18 @@ summary:focus-visible,
 .experience-row p {
   font-size: 15px;
   margin-top: 12px;
+}
+.experience-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.experience-row .experience-source {
+  display: inline-block;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+}
+.volunteer-source {
+  margin-top: 1rem;
 }
 .profile-project {
   display: flex;

@@ -26,7 +26,8 @@ export function Footer() {
         </div>
         <div className="contact-links">
           <Link href="/profile">Professional summary & CVs</Link>
-          {person.email && <a href={`mailto:${person.email}`}>Email me</a>}
+          <a href={`mailto:${person.email}`}>{person.email}</a>
+          <a href={`tel:${person.phone}`}>{person.phoneLabel}</a>
           {person.github && (
             <a href={person.github} target="_blank" rel="noopener noreferrer">
               GitHub

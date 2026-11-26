@@ -6,22 +6,22 @@ const systems = {
       label: "Publishing",
       input: "Content",
       output: "Publishing",
-      title: "Connect creation with distribution.",
-      body: "Meta Publisher uses the Meta Graph API and Claude for AI captions. The CV reports roughly 60% less per-post publishing time across 30+ client brands.",
+      title: "Draft, schedule, and publish.",
+      body: "A manager selects a client, uploads media, and edits a caption drafted with Claude. The Meta Graph API handles publishing, and delivery logs show what succeeded or failed.",
     },
     {
       label: "Reporting",
       input: "Insights",
       output: "Reporting",
-      title: "Give the team its time back.",
-      body: "Four automation operations systems included a content calendar and Instagram/YouTube insights workflows. The CV reports approximately 90% less weekly reporting effort.",
+      title: "Bring platform data into one view.",
+      body: "Apps Script pulls Instagram and YouTube metrics into shared workbooks. The trackers organize post data and surface changes in reach, views, and engagement.",
     },
     {
       label: "Moderation",
       input: "Comments",
       output: "Moderation",
-      title: "Make repetitive work manageable.",
-      body: "Comment Manager connects the Meta Graph API and Claude. The CV reports approximately 90% less manual comment moderation and about four hours saved per day per social media manager.",
+      title: "Put the review in one inbox.",
+      body: "Comment Manager brings comments into an approval queue. A social media manager can edit, approve, or reject the AI-drafted reply before it goes out.",
     },
   ],
   "creative-scoring": [
@@ -30,21 +30,21 @@ const systems = {
       input: "Creative",
       output: "CLIP",
       title: "Look beyond a thumbnail.",
-      body: "CLIP provides visual features as one input to the model. CNN Grad-CAM supports visual diagnosis. This diagram describes the components; it is not a live model prediction.",
+      body: "CLIP embeds the thumbnail as one input to the scoring model. Grad-CAM shows where a separate CNN responds to the image.",
     },
     {
       label: "Language",
       input: "Ad title",
       output: "TF-IDF",
       title: "Bring language into the picture.",
-      body: "TF-IDF title features add a text signal alongside the visual features. The technical CV identifies titles, rather than full ad copy, as the text input.",
+      body: "TF-IDF gives the video title a text representation alongside the thumbnail and upload-time metadata.",
     },
     {
       label: "Model",
       input: "Features",
       output: "LightGBM",
       title: "Combine the signals.",
-      body: "LightGBM combines CLIP visuals, TF-IDF titles, and metadata. Training used 13,000 YouTube ads. The CV reports validation on 32,000 Meta and Google ads, without supplying accuracy metrics.",
+      body: "LightGBM combines visual features, title text, and metadata. Evaluation used a chronological YouTube holdout. Unlabeled Meta and Google creatives supplied reference score distributions.",
     },
   ],
 };
@@ -94,8 +94,9 @@ export function CaseExplorer({ slug }: { slug: keyof typeof systems }) {
           </div>
         </div>
         <p className="case-explorer-caption">
-          Conceptual diagram based on the supplied CV. No confidential
-          interfaces or internal data are shown.
+          {slug === "narrativex"
+            ? "Workflow diagram based on the internship report and automation documentation."
+            : "Model diagram based on the project source code."}
         </p>
       </div>
     </section>

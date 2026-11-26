@@ -36,7 +36,7 @@ for mode, title in [('technical','Technical'),('nontechnical','Business & Operat
     if mode == 'technical':
         entries = [
           ('NarrativeX automation & internal tools','Built four automation operations systems; CV-reported ~90% less weekly reporting effort. Built Meta Publisher (Meta Graph API + Claude), reducing per-post publishing time by ~60% for 30+ client brands. Shipped a workforce tracker for ~40 employees on Vercel.'),
-          ('Pre-Flight Creative Scoring System','Academic project trained on 13K YouTube ads using CLIP visuals, TF-IDF titles, metadata, and LightGBM. Used CNN Grad-CAM for creative diagnosis; CV reports validation on 32K Meta and Google ads. Predictive accuracy was not supplied.'),
+          ('Pre-Flight Creative Scoring System','Built a draft scorer with CLIP, TF-IDF, and LightGBM. Held-out evaluation on 2,387 newer YouTube videos yielded 0.6154 raw ROC AUC. Scored 29,405 unlabeled Meta and Google creatives for comparison.'),
           ('India Digital Payments Landscape Analysis','Analyzed 10 years of data across six payment rails. Built Tableau trend and forecasting visualizations of UPI adoption from 2016-2025 and projections through 2030.')]
     elif mode == 'nontechnical':
         entries = [
@@ -51,7 +51,8 @@ for mode, title in [('technical','Technical'),('nontechnical','Business & Operat
     for name,body in entries: story += [para('<b>'+name+'</b>'),para(body)]
     story += [para('EDUCATION','HeadRT')]
     for e in data['education']: story += [para('<b>'+e['title']+'</b> | '+e['years']+'<br/>'+e['institution'])]
-    story += [para('LEADERSHIP & INTERESTS','HeadRT'),para('Campus Engagement Head, Alumni Relations Cell, NMIMS Mumbai (May 2026-present per CV): led an 83-member team supporting engagement with 31,000+ alumni. Production Lead, Virinchi (May 2023-Mar 2024): 25-member team and backstage operations for 4,000+ attendees.'),para('Interests: pickleball, poster-making, video editing, and emerging technology.'),Spacer(1,8),para('LinkedIn: <link href="https://www.linkedin.com/in/rishab-tej-2b7085219/">linkedin.com/in/rishab-tej-2b7085219</link>','SmallRT'),para('Results above are reported in the supplied CVs and have not been independently audited. This is an edited public summary, not the original institutional CV.','SmallRT')]
+    figures_note = ('Figures come from supplied CVs and saved project evaluations. This is an edited public summary of selected experience.' if mode == 'technical' else 'Results above are reported in the supplied CVs and have not been independently audited. This is an edited public summary, not the original institutional CV.')
+    story += [para('LEADERSHIP & INTERESTS','HeadRT'),para('Campus Engagement Head, Alumni Relations Cell, NMIMS Mumbai (May 2026-present per CV): led an 83-member team supporting engagement with 31,000+ alumni. Production Lead, Virinchi (May 2023-Mar 2024): 25-member team and backstage operations for 4,000+ attendees.'),para('Interests: pickleball, poster-making, video editing, and emerging technology.'),Spacer(1,8),para('LinkedIn: <link href="https://www.linkedin.com/in/rishab-tej-2b7085219/">linkedin.com/in/rishab-tej-2b7085219</link>','SmallRT'),para(figures_note,'SmallRT')]
     doc = SimpleDocTemplate(str(out / ('rishab-tej-'+mode+'.pdf')),pagesize=(595.28,841.89),rightMargin=42,leftMargin=42,topMargin=35,bottomMargin=48,title='Rishab Tej | '+title+' | Public CV Summary',author='G. Rishab Tej')
     doc.build(story,onFirstPage=footer,onLaterPages=footer)
     print(out / ('rishab-tej-'+mode+'.pdf'))

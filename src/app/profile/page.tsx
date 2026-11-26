@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { experience, person, projects } from "@/data/portfolio";
+import { experience, person, projects, volunteering } from "@/data/portfolio";
 import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Professional summary & CVs",
+  alternates: { canonical: "/profile" },
   description:
-    "A quick overview of Rishab Tej’s experience, education, projects, and public CV summaries.",
+    "A quick overview of Rishab Tej’s experience, volunteering, education, projects, and public CV summaries.",
 };
 export default function Profile() {
   return (
@@ -38,6 +39,8 @@ export default function Profile() {
           <a href="#cv" className="text-button">
             Download a CV summary ↓
           </a>
+          <a href={`mailto:${person.email}`} className="text-button">Email</a>
+          <a href={`tel:${person.phone}`} className="text-button">Call</a>
         </div>
         <section className="profile-section">
           <h2>Experience</h2>
@@ -45,7 +48,15 @@ export default function Profile() {
             {experience.map((e) => (
               <article className="experience-row" key={e.company}>
                 <span className="eyebrow">{e.date}</span>
-                <h3>{e.company}</h3>
+                <h3>
+                  {e.slug ? (
+                    <Link className="experience-link" href={`/work/${e.slug}`}>
+                      {e.company} <span aria-hidden="true">↗</span>
+                    </Link>
+                  ) : (
+                    e.company
+                  )}
+                </h3>
                 <strong>{e.role}</strong>
                 <p>{e.text}</p>
               </article>
@@ -106,6 +117,40 @@ export default function Profile() {
             </article>
           </div>
         </section>
+        <section
+          id="volunteering"
+          className="profile-section"
+          aria-labelledby="volunteering-title"
+        >
+          <h2 id="volunteering-title">Volunteering</h2>
+          <div>
+            {volunteering.map(({ role, organization, date, text, evidence }) => (
+              <article className="experience-row" key={role}>
+                <span className="eyebrow">{date}</span>
+                <h3>{role}</h3>
+                <strong>{organization}</strong>
+                <p>{text}</p>
+                {evidence && (
+                  <a
+                    className="experience-source"
+                    href={evidence.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {evidence.label} <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+              </article>
+            ))}
+            <p className="source-note volunteer-source">
+              Roles, dates, and fundraising figures are from my{" "}
+              <a href={person.linkedin} target="_blank" rel="noopener noreferrer">
+                LinkedIn profile
+              </a>
+              .
+            </p>
+          </div>
+        </section>
         <section id="cv" className="cv-section">
           <span className="eyebrow">TAKE THE SHORT VERSION WITH YOU</span>
           <h2>Pick your perspective.</h2>
@@ -141,8 +186,8 @@ export default function Profile() {
           </div>
         </section>
         <p className="source-note">
-          Experience and education are drawn from the supplied CVs. Project
-          overviews indicate where additional details remain unconfirmed.
+          Experience and education are drawn from my CVs, LinkedIn experience, and
+          internship records. Project pages include supporting material where available.
         </p>
       </main>
       <Footer />
