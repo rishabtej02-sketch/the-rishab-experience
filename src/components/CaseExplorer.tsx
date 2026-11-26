@@ -6,22 +6,22 @@ const systems = {
       label: "Publishing",
       input: "Content",
       output: "Publishing",
-      title: "Connect creation with distribution.",
-      body: "Meta Publisher uses the Meta Graph API and Claude for AI captions. The CV reports roughly 60% less per-post publishing time across 30+ client brands.",
+      title: "Draft, schedule, and publish.",
+      body: "A manager selects a client, uploads media, and edits a caption drafted with Claude. The Meta Graph API handles publishing, and delivery logs show what succeeded or failed.",
     },
     {
       label: "Reporting",
       input: "Insights",
       output: "Reporting",
-      title: "Give the team its time back.",
-      body: "Four automation operations systems included a content calendar and Instagram/YouTube insights workflows. The CV reports approximately 90% less weekly reporting effort.",
+      title: "Bring platform data into one view.",
+      body: "Apps Script pulls Instagram and YouTube metrics into shared workbooks. The trackers organize post data and surface changes in reach, views, and engagement.",
     },
     {
       label: "Moderation",
       input: "Comments",
       output: "Moderation",
-      title: "Make repetitive work manageable.",
-      body: "Comment Manager connects the Meta Graph API and Claude. The CV reports approximately 90% less manual comment moderation and about four hours saved per day per social media manager.",
+      title: "Put the review in one inbox.",
+      body: "Comment Manager brings comments into an approval queue. A social media manager can edit, approve, or reject the AI-drafted reply before it goes out.",
     },
   ],
   "creative-scoring": [
@@ -94,8 +94,9 @@ export function CaseExplorer({ slug }: { slug: keyof typeof systems }) {
           </div>
         </div>
         <p className="case-explorer-caption">
-          Conceptual diagram based on the supplied CV. No confidential
-          interfaces or internal data are shown.
+          {slug === "narrativex"
+            ? "Workflow diagram based on the internship report and automation documentation."
+            : "Conceptual diagram based on the supplied CV."}
         </p>
       </div>
     </section>

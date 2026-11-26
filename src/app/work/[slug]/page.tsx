@@ -6,6 +6,14 @@ import { ProjectArt } from "@/components/ProjectArt";
 import { Footer } from "@/components/Footer";
 import { MotionShell } from "@/components/MotionShell";
 import { CaseExplorer } from "@/components/CaseExplorer";
+import { ProjectEvidence } from "@/components/ProjectEvidence";
+
+const contextLabels = {
+  brief: "Project overview · details in progress",
+  cv: "CV-supported case study",
+  documented: "Documented internship",
+} satisfies Record<(typeof projects)[number]["status"], string>;
+
 export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }));
 }
@@ -55,11 +63,7 @@ export default async function CaseStudy({
             </div>
             <div>
               <span className="eyebrow">CONTEXT</span>
-              <p>
-                {p.status === "cv"
-                  ? "CV-supported case study"
-                  : "Project overview · details in progress"}
-              </p>
+              <p>{contextLabels[p.status]}</p>
             </div>
           </div>
         </section>
@@ -111,9 +115,9 @@ export default async function CaseStudy({
         <section className="outcome-section section-pad">
           <div className="section-kicker">
             <span>
-              {p.status === "cv"
-                ? "REPORTED OUTCOMES & SCOPE"
-                : "AREAS OF CONTRIBUTION"}
+              {p.status === "brief"
+                ? "AREAS OF CONTRIBUTION"
+                : "REPORTED OUTCOMES & SCOPE"}
             </span>
             <span>{p.name.toUpperCase()}</span>
           </div>
@@ -127,6 +131,7 @@ export default async function CaseStudy({
           </div>
           <p className="source-note">{p.source}</p>
         </section>
+        {p.evidence && <ProjectEvidence {...p.evidence} />}
         <section className="takeaway section-pad">
           <span className="eyebrow">THE TAKEAWAY</span>
           <h2>{p.takeaway}</h2>

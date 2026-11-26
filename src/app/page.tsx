@@ -207,6 +207,13 @@ export default function Home() {
                 and a steady interest in what emerging technology makes
                 possible.
               </p>
+              <p>
+                I’ve also led volunteer teams, organized fundraisers, and helped
+                start Street Cause’s Bangalore chapter.{" "}
+                <Link className="experience-source" href="/profile#volunteering">
+                  See my volunteering work <span aria-hidden="true">↗</span>
+                </Link>
+              </p>
               <div className="journey">
                 <div>
                   <span>2020—2024</span>

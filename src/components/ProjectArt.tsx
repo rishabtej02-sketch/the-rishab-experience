@@ -21,6 +21,36 @@ export function ProjectArt({ theme }: { theme: string }) {
           </div>
         </>
       )}
+      {theme === "rockwell" && (
+        <>
+          <div className="art-topline">ROCKWELL INDUSTRIES</div>
+          <div className="internship-art-mark rockwell-mark">
+            <i />
+            <i />
+            <i />
+            <i />
+          </div>
+          <div className="art-bottomline">
+            <span>EXHIBITIONS</span>
+            <span>DISTRIBUTOR RESEARCH</span>
+          </div>
+        </>
+      )}
+      {theme === "metalabs" && (
+        <>
+          <div className="art-topline">METALABS SERVICES</div>
+          <div className="internship-art-mark metalabs-mark">
+            <span>WriteGenius</span>
+            <span>GrabOn</span>
+            <span>SellersCommerce</span>
+            <span>Alternatives.co</span>
+          </div>
+          <div className="art-bottomline">
+            <span>PRODUCT RESEARCH</span>
+            <span>B2B OUTREACH</span>
+          </div>
+        </>
+      )}
       {theme === "pickleball" && (
         <>
           <span className="court-caption">

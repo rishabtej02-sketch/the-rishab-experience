@@ -11,6 +11,9 @@ test("homepage, process, case studies, and CV downloads work", async ({
   await expect(page.getByRole("heading", { level: 1 })).toHaveAccessibleName(
     "Rishab Tej",
   );
+  await expect(page.locator("#work .project-card h3").nth(0)).toHaveText("NarrativeX Media");
+  await expect(page.locator("#work .project-card h3").nth(1)).toHaveText("Rockwell Industries Limited");
+  await expect(page.locator("#work .project-card h3").nth(2)).toHaveText("MetaLabs Services LLP");
   await page.getByRole("tab", { name: "Research", exact: true }).click();
   await expect(page.getByRole("tabpanel")).toContainText("What do we know");
   await page
@@ -22,6 +25,8 @@ test("homepage, process, case studies, and CV downloads work", async ({
   await expect(page.getByRole("tabpanel")).toContainText("smallest useful");
   const slugs = [
     "narrativex",
+    "rockwell",
+    "metalabs",
     "hyderabad-pickleball",
     "creative-scoring",
     "next-step-hr",
@@ -36,8 +41,23 @@ test("homepage, process, case studies, and CV downloads work", async ({
         .getByRole("button", { name: "Moderation", exact: true })
         .click();
       await expect(page.locator("#system-detail")).toContainText(
-        "four hours saved",
+        "edit, approve, or reject",
       );
+      const evidence = page.getByRole("region", { name: "Work samples & evidence" });
+      await evidence.scrollIntoViewIfNeeded();
+      await expect(evidence.locator("img")).toHaveCount(5);
+      await expect(evidence.getByRole("link", { name: /Open Meta Publisher image/ })).toHaveAttribute(
+        "href",
+        "/evidence/narrativex/meta-publisher.webp",
+      );
+    }
+    if (slug === "rockwell") {
+      await expect(page.getByRole("heading", { name: "Internship completion certificate" })).toBeVisible();
+      await expect(page.getByRole("link", { name: /MetaLabs Services LLP/ })).toHaveAttribute("href", "/work/metalabs");
+    }
+    if (slug === "metalabs") {
+      await expect(page.getByRole("heading", { name: /SellersCommerce/ })).toBeVisible();
+      await expect(page.getByRole("heading", { name: /Alternatives.co/ })).toBeVisible();
     }
     if (slug === "creative-scoring") {
       await page.getByRole("button", { name: "Model", exact: true }).click();
@@ -47,6 +67,8 @@ test("homepage, process, case studies, and CV downloads work", async ({
     }
   }
   await page.goto("/profile");
+  await expect(page.getByRole("heading", { name: "Volunteering" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Divisional President" })).toBeVisible();
   await expect(
     page.getByText("Rockwell Industries Limited", { exact: true }),
   ).toBeVisible();
@@ -85,7 +107,7 @@ test("responsive layouts, keyboard navigation, and reduced motion are accessible
       await expect(page).toHaveURL(/profile/);
     }
   }
-  for (const route of ["/profile", "/work/narrativex", "/work/next-step-hr"]) {
+  for (const route of ["/profile", "/work/narrativex", "/work/rockwell", "/work/metalabs", "/work/next-step-hr"]) {
     await page.goto(route);
     await page.screenshot({
       path: `tmp/screenshots/${route.replaceAll("/", "-")}.png`,

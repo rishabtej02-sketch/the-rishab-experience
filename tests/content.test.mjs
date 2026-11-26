@@ -6,17 +6,28 @@ import {
   projects,
   process as thinking,
   experience,
+  volunteering,
 } from "../src/data/portfolio.ts";
 
 test("case-study routes and process links resolve to unique real projects", () => {
   const slugs = new Set(projects.map((p) => p.slug));
-  assert.equal(slugs.size, 5);
+  assert.equal(slugs.size, projects.length);
+  assert.deepEqual(projects.slice(0, 3).map(({ slug }) => slug), [
+    "narrativex",
+    "rockwell",
+    "metalabs",
+  ]);
   for (const step of thinking) assert.ok(slugs.has(step.slug));
   for (const p of projects) {
     assert.ok(p.approach.length >= 3);
     assert.ok(p.source.length > 30);
     if (p.status === "brief") assert.match(p.source, /awaiting confirmation/);
+    for (const image of p.evidence?.images ?? []) {
+      assert.equal(readFileSync("public" + image.src, "ascii").slice(8, 12), "WEBP");
+      assert.ok(image.alt.length > 0);
+    }
   }
+  for (const role of volunteering) assert.ok(role.organization && role.date);
 });
 test("approved employer correction and contact policy are preserved", () => {
   assert.ok(
