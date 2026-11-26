@@ -11,7 +11,7 @@ import { ProjectEvidence } from "@/components/ProjectEvidence";
 const contextLabels = {
   brief: "Project overview · details in progress",
   cv: "CV-supported case study",
-  documented: "Documented internship",
+  documented: "Project records available",
   repository: "Academic project · source available",
 } satisfies Record<(typeof projects)[number]["status"], string>;
 

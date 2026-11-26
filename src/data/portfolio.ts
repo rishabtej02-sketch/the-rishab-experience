@@ -447,83 +447,145 @@ export const projects: Project[] = [
   {
     slug: "next-step-hr",
     name: "Next Step HR",
-    title: "From industry noise to useful content.",
+    title: "Research and campaigns for employer acquisition.",
     category: "RESEARCH + B2B MARKETING",
     theme: "nextstep",
-    year: "CONTENT SYSTEMS",
+    year: "FROM AUG 2026",
     summary:
-      "Connecting industry research, employer-focused marketing, and news-to-content automation.",
-    role: "B2B content strategy, research & workflow development",
+      "Built a funding-news tracker, researched employer prospects, and ran and reviewed Meta campaigns for a recruitment consultancy.",
+    role: "Marketing Consultant – Performance Marketing & Lead Generation",
     problem:
-      "Employer-focused communication needs relevance and a consistent point of view. The work connects industry research with a repeatable approach to B2B content.",
+      "Next Step HR wanted to generate more enquiries from companies hiring mid-senior and senior talent. The corporate project combined employer research, campaign testing, and lead tracking so business development could see where an enquiry came from and follow up.",
     approach: [
       {
-        title: "Begin with the audience",
-        body: "Worked on employer-focused marketing and B2B content strategy for Next Step HR, using industry research as the starting point for communication.",
+        title: "Build a funding-news tracker",
+        body: "I built a Google Apps Script tracker that pulled funding stories from Inc42, Entrackr, and YourStory, filtered and deduplicated the items, and prepared a daily digest. I added company-name extraction and LinkedIn lookup links, then turned the resulting company list into a prospecting worklist.",
       },
       {
-        title: "Connect news and content",
-        body: "Worked on automated news-to-content workflows. This overview represents the research-to-content concept; internal prompts, sources, and operational materials are not published.",
+        title: "Research employers and decision-makers",
+        body: "I used the worklist to research recently funded companies and identify potential contacts. I evaluated Apollo.io for company and decision-maker data and coordinated Zoho demos for tracking prospects and follow-ups. A later verification workflow was configured to use LinkedIn Jobs and official careers pages to check whether vacancies were open.",
       },
       {
-        title: "Keep the message useful",
-        body: "The portfolio brief identifies research-led content and marketing as the scope. Specific campaign deliverables and measured outcomes remain to be documented.",
-      },
-    ],
-    tools: ["Industry research", "B2B content strategy", "Content workflows"],
-    outcomes: [
-      { value: "Research", label: "industry-led inputs" },
-      { value: "Relevance", label: "employer-focused messaging" },
-      { value: "Repeatability", label: "news-to-content workflows" },
-    ],
-    takeaway:
-      "The value is in translating an industry development into something an employer can use.",
-    source:
-      "Based on the supplied project brief. Dates, platform details, formal role title, and campaign results are awaiting confirmation.",
-    status: "brief",
-  },
-  {
-    slug: "austridge",
-    name: "Austridge Group",
-    title: "Connecting the moving parts.",
-    category: "OPERATIONS + DIGITAL",
-    theme: "austridge",
-    year: "BUSINESS OPERATIONS",
-    summary:
-      "Working across recruitment, communication, business coordination, and website initiatives.",
-    role: "Recruitment operations & digital communication",
-    problem:
-      "Recruitment operations involve people, communication, and coordination across multiple moving parts. This work sits at that intersection, with a parallel focus on digital presence.",
-    approach: [
-      {
-        title: "Work across the handoffs",
-        body: "Contributed to recruitment operations and business coordination at Austridge Group, as described in the supplied portfolio brief.",
+        title: "Turn industry signals into editorial briefs",
+        body: "For Next Step Signals, I researched hiring developments, attached original sources, and added employer outreach angles to the team's post ideas. The broader editorial workflow used a Sheets news collector and a separate review step to check source facts before drafting ideas for The Hiring Brief and MythBuster Monday.",
       },
       {
-        title: "Support clearer communication",
-        body: "Worked on digital communication alongside operational responsibilities. Confidential candidate information and company materials are excluded from this overview.",
+        title: "Test campaigns and diagnose delivery",
+        body: "I set up an employer-facing Meta engagement campaign and rebuilt it when some placements failed to deliver. In separate candidate recruitment campaigns, I tested broad and narrow audiences and paused ad sets when the responses did not match the role.",
       },
       {
-        title: "Develop the digital presence",
-        body: "Participated in website development initiatives. The supplied brief does not specify the technology stack, launch status, or attributable results.",
+        title: "Review performance and plan the handoff",
+        body: "I reviewed six posts and five paid ads using Instagram insights and Meta Ads Manager, comparing engagement, landing-page activity, and candidate responses by campaign objective. The employer project also scoped source attribution and an enquiry handoff to business development.",
       },
     ],
     tools: [
-      "Recruitment operations",
-      "Business coordination",
-      "Digital communication",
-      "Website development",
+      "Google Apps Script",
+      "Google Sheets",
+      "RSS",
+      "Meta Ads Manager",
+      "LinkedIn research",
+      "Apollo.io evaluation",
     ],
     outcomes: [
-      { value: "People", label: "recruitment operations" },
-      { value: "Clarity", label: "digital communication" },
-      { value: "Presence", label: "website initiatives" },
+      { value: "3", label: "funding sources in the original RSS tracker" },
+      { value: "6 + 5", label: "posts and paid ads reviewed, 8 Sep–11 Oct 2026" },
+      { value: "90 days", label: "scope of the NMIMS corporate project" },
     ],
     takeaway:
-      "Execution often means connecting the handoffs that sit between individual tasks.",
+      "Funding news was most useful when it pointed to a company worth researching. For campaigns, the objective determined which results were worth comparing.",
     source:
-      "Based on the supplied project brief. Employment dates, formal title, tools, and measurable outcomes are awaiting confirmation.",
-    status: "brief",
+      "Role and project scope come from the offer and employer brief. Workflow details and review counts come from my work log, research trackers, and September–October performance review.",
+    status: "documented",
+    evidence: {
+      links: [
+        {
+          href: "https://www.linkedin.com/company/nextstephruae/",
+          label: "Next Step HR on LinkedIn",
+          detail: "The consultancy’s public recruitment and employer-facing channel.",
+        },
+        {
+          href: person.linkedin,
+          label: "My Next Step HR experience",
+          detail: "Public role and scope for the performance marketing and lead generation project.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "austridge",
+    name: "The Austridge Group",
+    title: "Restructuring Austridge’s website.",
+    category: "OPERATIONS + DIGITAL",
+    theme: "austridge",
+    year: "NOV 2026 · WEBSITE PROJECT",
+    summary:
+      "Planned the move from six to four website service categories and coordinated how TAG Staffing and BRIO Projects appeared on the group site.",
+    role: "Website strategy, content & agency coordination",
+    problem:
+      "The group’s website needed to explain what a client could hire it for and where its specialist businesses fit. The existing service categories overlapped, so visitors needed a clearer route to staffing, facilities, construction, or managed operations.",
+    approach: [
+      {
+        title: "Consolidate six service categories into four",
+        body: "I presented the revised structure to leadership and the web agency. It organized the site around Labour Hire & Recruitment, Facilities Management, Construction Management, and Managed Services. I shared rewritten service content and mapped the homepage cards and navigation. General project and event delivery sat within Managed Services, where the content plan also proposed digital and systems support.",
+      },
+      {
+        title: "Give TAG Staffing a clear place on the site",
+        body: "I specified how to introduce TAG Staffing within Labour Hire & Recruitment, including how the brand should appear alongside the service label. That gave employers one clear route into staffing while keeping the group’s navigation organized around client needs.",
+      },
+      {
+        title: "Coordinate the handoff to BRIO Projects",
+        body: "I coordinated the decision to keep a construction overview on the group site and give visitors a link to BRIO Projects for specialist detail. I prepared the content and routing instructions with leadership. The web agency implemented the site changes.",
+      },
+      {
+        title: "Support driver recruitment",
+        body: "My wider operations work covered candidate screening and interview coordination for the driver recruitment pipeline. The website brief also proposed a homepage introduction to the Transit Pathway Victoria partnership, with a link for visitors who wanted to explore it.",
+      },
+    ],
+    tools: [
+      "Website content strategy",
+      "Service navigation",
+      "Agency coordination",
+      "Recruitment operations",
+    ],
+    outcomes: [
+      { value: "6 → 4", label: "service categories consolidated on the group site" },
+      { value: "TAG", label: "staffing positioned within Labour Hire & Recruitment" },
+      { value: "BRIO", label: "construction overview with a path to the specialist site" },
+    ],
+    takeaway:
+      "The service structure gave visitors a clear starting point and the web agency a concrete plan to implement.",
+    source:
+      "The public website shows the service structure. November website records document my content and coordination contribution. Recruitment scope comes from my portfolio brief.",
+    status: "documented",
+    evidence: {
+      links: [
+        {
+          href: "https://theaustridgegroup.com.au/index.php",
+          label: "The Austridge Group website",
+          detail: "The live homepage and four-service navigation.",
+        },
+        {
+          href: "https://theaustridgegroup.com.au/labour-hire.php",
+          label: "Labour Hire & Recruitment",
+          detail: "The service page for staffing, recruitment, and workforce solutions.",
+        },
+        {
+          href: "https://theaustridgegroup.com.au/construction-management.php",
+          label: "Construction Management",
+          detail: "The group’s construction overview and its introduction to BRIO Projects.",
+        },
+        {
+          href: "https://theaustridgegroup.com.au/managed-services.php",
+          label: "Managed Services",
+          detail: "The public page showing how project delivery, event delivery, and outsourced operations are grouped.",
+        },
+        {
+          href: "https://brioprojects.com.au/",
+          label: "BRIO Projects",
+          detail: "The specialist site linked from the group’s construction page.",
+        },
+      ],
+    },
   },
 ];
 
@@ -576,7 +638,7 @@ export const process = [
     question: "What do we know, and what are we assuming?",
     text: "Combine context, data, and the audience’s perspective. Make the unanswered questions visible.",
     example:
-      "At Next Step HR, industry research informs employer-focused B2B content.",
+      "At Next Step HR, a funding-news tracker turned sourced stories into a worklist of companies to research.",
     slug: "next-step-hr",
   },
   {
@@ -606,6 +668,13 @@ export const process = [
 ];
 
 export const experience = [
+  {
+    company: "Next Step HR",
+    role: "Marketing Consultant – Performance Marketing & Lead Generation",
+    date: "From Aug 2026",
+    text: "Built a funding-news tracker, researched employer prospects, and reviewed Meta campaigns during a 90-day NMIMS corporate project.",
+    slug: "next-step-hr",
+  },
   {
     company: "NarrativeX Media Pvt. Ltd.",
     role: "Founders Office · Summer internship",

@@ -92,8 +92,28 @@ test("homepage, process, case studies, and CV downloads work", async ({
       });
       expect(duration).toBeGreaterThan(40);
     }
+    if (slug === "next-step-hr") {
+      await expect(page.getByText("Marketing Consultant – Performance Marketing & Lead Generation")).toBeVisible();
+      await expect(page.getByRole("heading", { name: "Build a funding-news tracker" })).toBeVisible();
+      await expect(page.getByRole("link", { name: /Next Step HR on LinkedIn/ })).toHaveAttribute(
+        "href",
+        "https://www.linkedin.com/company/nextstephruae/",
+      );
+    }
+    if (slug === "austridge") {
+      await expect(page.getByRole("heading", { name: "Consolidate six service categories into four" })).toBeVisible();
+      await expect(page.getByRole("link", { name: "Construction Management" })).toHaveAttribute(
+        "href",
+        "https://theaustridgegroup.com.au/construction-management.php",
+      );
+      await expect(page.getByRole("link", { name: "BRIO Projects" })).toHaveAttribute(
+        "href",
+        "https://brioprojects.com.au/",
+      );
+    }
   }
   await page.goto("/profile");
+  await expect(page.getByRole("heading", { name: "Next Step HR", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Volunteering" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Divisional President" })).toBeVisible();
   await expect(
@@ -134,7 +154,7 @@ test("responsive layouts, keyboard navigation, and reduced motion are accessible
       await expect(page).toHaveURL(/profile/);
     }
   }
-  for (const route of ["/profile", "/work/narrativex", "/work/rockwell", "/work/metalabs", "/work/creative-scoring", "/work/next-step-hr"]) {
+  for (const route of ["/profile", "/work/narrativex", "/work/rockwell", "/work/metalabs", "/work/creative-scoring", "/work/next-step-hr", "/work/austridge"]) {
     await page.goto(route);
     await page.screenshot({
       path: `tmp/screenshots/${route.replaceAll("/", "-")}.png`,
@@ -145,6 +165,14 @@ test("responsive layouts, keyboard navigation, and reduced motion are accessible
       .analyze();
     expect(result.violations).toEqual([]);
   }
+  await page.setViewportSize({ width: 375, height: 900 });
+  for (const route of ["/work/next-step-hr", "/work/austridge"]) {
+    await page.goto(route);
+    expect(await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    )).toBe(true);
+  }
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
   await page.keyboard.press("Tab");
   await expect(

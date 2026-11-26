@@ -37,7 +37,7 @@ The four discipline panels use native `details`. Process tabs support arrows, Ho
 
 The three supplied institutional CVs and the user’s project brief are source materials. The Rockwell employer name was explicitly corrected by the user to **Rockwell Industries Limited** on November 22, 2026.
 
-NarrativeX and creative scoring case studies include CV-reported figures, labeled as estimates or dataset scope. Hyderabad Pickleball Association, Next Step HR, and Austridge are brief-supported overviews, with missing dates, titles, tool details, and results clearly identified. Interpretive takeaways are editorial synthesis, not attributed quotes. No internal company materials are published.
+The case studies cite their sources and label the scope of reported figures. Next Step HR draws on the offer, work log, and campaign review. The Austridge Group draws on project records and the public service pages. Hyderabad Pickleball Association is based on the project brief, with individual attribution and metrics still awaiting confirmation.
 
 The site lists the public email address, telephone number, and LinkedIn profile approved by Rishab. GitHub points to the connected account. Original CVs contain private identifiers; do not copy them into `public/` or commit them. Public summaries omit academic IDs, age, gender, institution phone/email, and grades.
 
@@ -73,7 +73,7 @@ The [protected preview](https://the-rishab-experience-gtdo3gxdt-agency-one.verce
 
 Deploy future **previews** without a production domain or promotion. With the deployment REST API, omit `target` for a preview and verify that the response target is null. Production publishing requires Rishab’s approval.
 
-Preview metadata defaults to `noindex, nofollow`. Before an approved production launch, set `PORTFOLIO_INDEXABLE=true`, configure the canonical domain/metadata base and sitemap, verify contact details and the three brief-only project overviews, and repeat the production checks. Do not add a guessed domain.
+Preview metadata defaults to `noindex, nofollow`. Before an approved production launch, set `PORTFOLIO_INDEXABLE=true`, configure the canonical domain, metadata base, and sitemap, verify the contact details and project claims, and repeat the production checks.
 
 ## References and licensing
 
