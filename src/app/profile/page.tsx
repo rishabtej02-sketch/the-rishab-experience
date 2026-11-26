@@ -4,6 +4,7 @@ import { experience, person, projects, volunteering } from "@/data/portfolio";
 import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Professional summary & CVs",
+  alternates: { canonical: "/profile" },
   description:
     "A quick overview of Rishab Tej’s experience, volunteering, education, projects, and public CV summaries.",
 };

@@ -11,6 +11,10 @@ test("homepage, process, case studies, and CV downloads work", async ({
   await expect(page.getByRole("heading", { level: 1 })).toHaveAccessibleName(
     "Rishab Tej",
   );
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://the-rishab-experience.vercel.app/",
+  );
   await expect(page.locator("#work .project-card h3").nth(0)).toHaveText("NarrativeX Media");
   await expect(page.locator("#work .project-card h3").nth(1)).toHaveText("Rockwell Industries Limited");
   await expect(page.locator("#work .project-card h3").nth(2)).toHaveText("MetaLabs Services LLP");
@@ -101,7 +105,15 @@ test("homepage, process, case studies, and CV downloads work", async ({
       );
     }
     if (slug === "austridge") {
-      await expect(page.getByRole("heading", { name: "Consolidate six service categories into four" })).toBeVisible();
+      await expect(page.getByRole("heading", { name: "Support the driver recruitment pipeline" })).toBeVisible();
+      const remit = page.getByRole("region", { name: "Project Coordinator remit" });
+      await expect(remit).toContainText("Connecteam");
+      await expect(remit).toContainText("courier systems integration");
+      await expect(remit).toContainText("Search Console");
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        "https://the-rishab-experience.vercel.app/work/austridge",
+      );
       await expect(page.getByRole("link", { name: "Construction Management" })).toHaveAttribute(
         "href",
         "https://theaustridgegroup.com.au/construction-management.php",
@@ -114,6 +126,7 @@ test("homepage, process, case studies, and CV downloads work", async ({
   }
   await page.goto("/profile");
   await expect(page.getByRole("heading", { name: "Next Step HR", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "The Austridge Group", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Volunteering" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Divisional President" })).toBeVisible();
   await expect(
@@ -124,6 +137,11 @@ test("homepage, process, case studies, and CV downloads work", async ({
     expect(response.status()).toBe(200);
     expect(response.headers()["content-type"]).toContain("application/pdf");
   }
+  const sitemap = await request.get("/sitemap.xml");
+  expect(sitemap.status()).toBe(200);
+  expect(await sitemap.text()).toContain(
+    "<loc>https://the-rishab-experience.vercel.app/work/austridge</loc>",
+  );
   expect(errors).toEqual([]);
 });
 

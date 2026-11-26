@@ -73,7 +73,7 @@ The [protected preview](https://the-rishab-experience-gtdo3gxdt-agency-one.verce
 
 Deploy future **previews** without a production domain or promotion. With the deployment REST API, omit `target` for a preview and verify that the response target is null. Production publishing requires Rishab’s approval.
 
-Preview metadata defaults to `noindex, nofollow`. Before an approved production launch, set `PORTFOLIO_INDEXABLE=true`, configure the canonical domain, metadata base, and sitemap, verify the contact details and project claims, and repeat the production checks.
+Preview deployments use `noindex, nofollow`. Vercel production deployments allow indexing by default and publish canonical links, robots.txt, and the sitemap for https://the-rishab-experience.vercel.app. Set `PORTFOLIO_INDEXABLE=false` to pause production indexing or `PORTFOLIO_INDEXABLE=true` to simulate production indexing in a local build.
 
 ## References and licensing
 

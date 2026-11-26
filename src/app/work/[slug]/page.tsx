@@ -28,6 +28,7 @@ export async function generateMetadata({
   return {
     title: project?.name ?? "Project not found",
     description: project?.summary,
+    alternates: project ? { canonical: `/work/${project.slug}` } : undefined,
   };
 }
 export default async function CaseStudy({
@@ -125,6 +126,22 @@ export default async function CaseStudy({
             </div>
           </div>
         </section>
+        {p.roleScope && (
+          <section
+            className="case-section section-pad approach-section"
+            aria-labelledby="role-scope-title"
+          >
+            <h2 id="role-scope-title">Project Coordinator remit</h2>
+            <div>
+              {p.roleScope.map(({ title, body }) => (
+                <article className="case-scope-item" key={title}>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
         {(p.slug === "narrativex" || p.slug === "creative-scoring") && (
           <CaseExplorer slug={p.slug} />
         )}

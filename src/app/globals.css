@@ -1348,15 +1348,20 @@ summary:focus-visible,
   font-size: 12px;
   padding-top: 6px;
 }
-.approach-step h3 {
+.approach-step h3,
+.case-scope-item h3 {
   font-size: 29px;
   letter-spacing: -0.04em;
   line-height: 1.2;
   margin-bottom: 15px;
 }
-.approach-step p {
+.approach-step p,
+.case-scope-item p {
   font-size: 17px;
   line-height: 1.8;
+}
+.case-scope-item + .case-scope-item {
+  margin-top: 2rem;
 }
 .tools-row {
   padding-top: 15px;

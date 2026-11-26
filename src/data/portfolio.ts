@@ -56,6 +56,7 @@ export type Project = {
   role: string;
   problem: string;
   approach: { title: string; body: string }[];
+  roleScope?: { title: string; body: string }[];
   tools: string[];
   outcomes: { value: string; label: string }[];
   takeaway: string;
@@ -514,48 +515,63 @@ export const projects: Project[] = [
   {
     slug: "austridge",
     name: "The Austridge Group",
-    title: "Restructuring Austridge’s website.",
-    category: "OPERATIONS + DIGITAL",
+    title: "Coordinating recruitment, operations, and digital work.",
+    category: "RECRUITMENT + PROJECT COORDINATION",
     theme: "austridge",
-    year: "NOV 2026 · WEBSITE PROJECT",
+    year: "2026 · PROJECT COORDINATION",
     summary:
-      "Planned the move from six to four website service categories and coordinated how TAG Staffing and BRIO Projects appeared on the group site.",
-    role: "Website strategy, content & agency coordination",
+      "Supported driver recruitment and business development, and coordinated website and service-content changes with the Melbourne team and its web agency.",
+    role: "Project coordination across staffing, operations, and digital",
     problem:
-      "The group’s website needed to explain what a client could hire it for and where its specialist businesses fit. The existing service categories overlapped, so visitors needed a clearer route to staffing, facilities, construction, or managed operations.",
+      "The Austridge Group delivers workforce, project, and operational services in Victoria through TAG Staffing, BRIO Projects, and Ecotag Solutions. Coordinating remotely with Melbourne means keeping candidate handoffs, client commitments, and digital information clear across the three brands.",
     approach: [
       {
-        title: "Consolidate six service categories into four",
-        body: "I presented the revised structure to leadership and the web agency. It organized the site around Labour Hire & Recruitment, Facilities Management, Construction Management, and Managed Services. I shared rewritten service content and mapped the homepage cards and navigation. General project and event delivery sat within Managed Services, where the content plan also proposed digital and systems support.",
+        title: "Support the driver recruitment pipeline",
+        body: "I supported candidate screening, candidate coordination, and interview scheduling for driver recruitment. The work connected the staffing team’s requirements with the people and interview timings needed to progress each application.",
       },
       {
-        title: "Give TAG Staffing a clear place on the site",
-        body: "I specified how to introduce TAG Staffing within Labour Hire & Recruitment, including how the brand should appear alongside the service label. That gave employers one clear route into staffing while keeping the group’s navigation organized around client needs.",
+        title: "Support business research and communication",
+        body: "Alongside recruitment, I supported business research, business development, and digital communication. One example was the website brief for a proposed Transit Pathway Victoria partnership feature, which explained the driver recruitment relationship and gave visitors a route to the partner site.",
       },
       {
-        title: "Coordinate the handoff to BRIO Projects",
-        body: "I coordinated the decision to keep a construction overview on the group site and give visitors a link to BRIO Projects for specialist detail. I prepared the content and routing instructions with leadership. The web agency implemented the site changes.",
+        title: "Clarify what clients can hire the group for",
+        body: "I presented the move from six website service categories to four and shared rewritten content and navigation requirements. The new structure covered Labour Hire & Recruitment, Facilities Management, Construction Management, and Managed Services. General project and event delivery sat under Managed Services, where the brief also proposed digital and systems support.",
       },
       {
-        title: "Support driver recruitment",
-        body: "My wider operations work covered candidate screening and interview coordination for the driver recruitment pipeline. The website brief also proposed a homepage introduction to the Transit Pathway Victoria partnership, with a link for visitors who wanted to explore it.",
+        title: "Coordinate delivery with leadership and the web agency",
+        body: "I specified how TAG Staffing should appear on the recruitment page and coordinated a construction overview that would send visitors to BRIO Projects for specialist detail. I prepared the copy and routing instructions with leadership. The web agency implemented the changes.",
+      },
+    ],
+    roleScope: [
+      {
+        title: "Client projects and stakeholder follow-through",
+        body: "The coordinator tracks tasks, timelines, documents, and deliverables across the three brands. Stakeholder and client meetings establish decisions and action owners. Courier systems integration and support issues stay on the list through resolution.",
+      },
+      {
+        title: "Rostering and client communication",
+        body: "The coordinator maintains shifts in Connecteam, sends weekly shift updates to clients, and triages group and Ecotag project inboxes so each enquiry has an owner and a follow-up.",
+      },
+      {
+        title: "Digital marketing, websites, and search",
+        body: "The role covers content and fixes across four websites, brand consistency, social calendars, email campaigns, and Google Business Profiles. Google Analytics and Search Console provide data for marketing reports and help identify SEO and indexing issues.",
       },
     ],
     tools: [
+      "Candidate screening and interview coordination",
+      "Business research",
+      "Stakeholder coordination",
       "Website content strategy",
-      "Service navigation",
-      "Agency coordination",
-      "Recruitment operations",
+      "Agency briefs",
     ],
     outcomes: [
+      { value: "Drivers", label: "candidate screening and interview coordination" },
+      { value: "3 brands", label: "covered by the Project Coordinator role" },
       { value: "6 → 4", label: "service categories consolidated on the group site" },
-      { value: "TAG", label: "staffing positioned within Labour Hire & Recruitment" },
-      { value: "BRIO", label: "construction overview with a path to the specialist site" },
     ],
     takeaway:
-      "The service structure gave visitors a clear starting point and the web agency a concrete plan to implement.",
+      "In recruitment and website delivery, I learned to make each handoff clear about the purpose, who owns it, and what happens next.",
     source:
-      "The public website shows the service structure. November website records document my content and coordination contribution. Recruitment scope comes from my portfolio brief.",
+      "Recruitment and business support come from my portfolio brief. The Project Coordinator job description sets out the wider role scope. November project records and the public website document the site contribution.",
     status: "documented",
     evidence: {
       links: [
@@ -668,6 +684,13 @@ export const process = [
 ];
 
 export const experience = [
+  {
+    company: "The Austridge Group",
+    role: "Project coordination across staffing, operations, and digital",
+    date: "2026 · Project work",
+    text: "Supported driver recruitment, business research, and digital communication. Coordinated a four-service website structure and agency handoffs for TAG Staffing and BRIO Projects.",
+    slug: "austridge",
+  },
   {
     company: "Next Step HR",
     role: "Marketing Consultant – Performance Marketing & Lead Generation",
