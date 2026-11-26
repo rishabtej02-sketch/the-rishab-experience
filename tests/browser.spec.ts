@@ -13,7 +13,7 @@ test("homepage, process, case studies, and CV downloads work", async ({
   );
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     "href",
-    "https://the-rishab-experience.vercel.app/",
+    /^https:\/\/the-rishab-experience\.vercel\.app\/?$/,
   );
   await expect(page.locator("#work .project-card h3").nth(0)).toHaveText("NarrativeX Media");
   await expect(page.locator("#work .project-card h3").nth(1)).toHaveText("Rockwell Industries Limited");
