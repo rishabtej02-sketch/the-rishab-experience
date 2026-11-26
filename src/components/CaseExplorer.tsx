@@ -30,21 +30,21 @@ const systems = {
       input: "Creative",
       output: "CLIP",
       title: "Look beyond a thumbnail.",
-      body: "CLIP provides visual features as one input to the model. CNN Grad-CAM supports visual diagnosis. This diagram describes the components; it is not a live model prediction.",
+      body: "CLIP embeds the thumbnail as one input to the scoring model. Grad-CAM shows where a separate CNN responds to the image.",
     },
     {
       label: "Language",
       input: "Ad title",
       output: "TF-IDF",
       title: "Bring language into the picture.",
-      body: "TF-IDF title features add a text signal alongside the visual features. The technical CV identifies titles, rather than full ad copy, as the text input.",
+      body: "TF-IDF gives the video title a text representation alongside the thumbnail and upload-time metadata.",
     },
     {
       label: "Model",
       input: "Features",
       output: "LightGBM",
       title: "Combine the signals.",
-      body: "LightGBM combines CLIP visuals, TF-IDF titles, and metadata. Training used 13,000 YouTube ads. The CV reports validation on 32,000 Meta and Google ads, without supplying accuracy metrics.",
+      body: "LightGBM combines visual features, title text, and metadata. Evaluation used a chronological YouTube holdout. Unlabeled Meta and Google creatives supplied reference score distributions.",
     },
   ],
 };
@@ -96,7 +96,7 @@ export function CaseExplorer({ slug }: { slug: keyof typeof systems }) {
         <p className="case-explorer-caption">
           {slug === "narrativex"
             ? "Workflow diagram based on the internship report and automation documentation."
-            : "Conceptual diagram based on the supplied CV."}
+            : "Model diagram based on the project source code."}
         </p>
       </div>
     </section>

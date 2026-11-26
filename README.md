@@ -39,7 +39,7 @@ The three supplied institutional CVs and the user’s project brief are source m
 
 NarrativeX and creative scoring case studies include CV-reported figures, labeled as estimates or dataset scope. Hyderabad Pickleball Association, Next Step HR, and Austridge are brief-supported overviews, with missing dates, titles, tool details, and results clearly identified. Interpretive takeaways are editorial synthesis, not attributed quotes. No internal company materials are published.
 
-LinkedIn was explicitly approved. GitHub points to the connected account. Email remains empty until a public address is approved. Original CVs contain private identifiers; do not copy them into `public/` or commit them. Public summaries omit academic IDs, age, gender, institution phone/email, and grades.
+The site lists the public email address, telephone number, and LinkedIn profile approved by Rishab. GitHub points to the connected account. Original CVs contain private identifiers; do not copy them into `public/` or commit them. Public summaries omit academic IDs, age, gender, institution phone/email, and grades.
 
 To regenerate the summaries with Python + ReportLab:
 

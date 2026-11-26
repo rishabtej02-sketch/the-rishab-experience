@@ -3,7 +3,9 @@ export const person = {
   headline: "I turn ideas into things that work.",
   summary:
     "An engineer by training. A builder by instinct. I connect business, technology, and people to turn an interesting problem into something useful.",
-  email: "",
+  email: "rishabtej02@gmail.com",
+  phone: "+918309770934",
+  phoneLabel: "+91 83097 70934",
   linkedin: "https://www.linkedin.com/in/rishab-tej-2b7085219/",
   github: "https://github.com/rishabtej02-sketch",
   education: [
@@ -35,6 +37,14 @@ type EvidenceLink = {
   detail: string;
 };
 
+type EvidenceVideo = {
+  src: string;
+  poster: string;
+  width: number;
+  height: number;
+  description: string;
+};
+
 export type Project = {
   slug: string;
   name: string;
@@ -50,10 +60,11 @@ export type Project = {
   outcomes: { value: string; label: string }[];
   takeaway: string;
   source: string;
-  status: "cv" | "brief" | "documented";
+  status: "cv" | "brief" | "documented" | "repository";
   evidence?: {
     images?: EvidenceImage[];
     links?: EvidenceLink[];
+    video?: EvidenceVideo;
   };
 };
 
@@ -89,7 +100,7 @@ export const projects: Project[] = [
       },
       {
         title: "Build workforce and client-facing tools",
-        body: "Built NarrativeX Tracker, a web app and Windows desktop agent for attendance, activity reports, and payroll. Delivered an agency website, a doctor-discovery website with an appointment enquiry flow, and a Shopify storefront for Theekaa with 54 imported products across four collections.",
+        body: "Built NarrativeX Tracker, a web app and Windows desktop agent for attendance, activity reports, and payroll. I also built the NarrativeX Media agency website at narrativexmedia.in, a separate doctor-discovery site with an appointment enquiry flow, and a Shopify storefront for Theekaa with 54 products across four collections.",
       },
     ],
     tools: [
@@ -336,7 +347,7 @@ export const projects: Project[] = [
   {
     slug: "creative-scoring",
     name: "AI Creative Scoring System",
-    title: "Before the spend, a better signal.",
+    title: "Pre-Flight Creative Scoring",
     category: "MACHINE LEARNING + ADS",
     theme: "scoring",
     year: "ACADEMIC PROJECT",
@@ -347,16 +358,16 @@ export const projects: Project[] = [
       "Media allocation decisions often happen before a creative’s weaknesses are clear. This project explored whether visual, text, and metadata signals could support better pre-launch diagnosis.",
     approach: [
       {
-        title: "Look at the creative from several angles",
-        body: "Built a pre-spend ad scoring tool trained on 13,000 YouTube ads. The model combines CLIP visual features, TF-IDF title features, and metadata with LightGBM.",
+        title: "Define what it means to outperform",
+        body: "Labeled YouTube videos by whether they beat the trailing view-count median for earlier uploads from the same channel and format. The LightGBM model combines CLIP image embeddings, TF-IDF title features, computer-vision features, and upload-time metadata.",
       },
       {
-        title: "Make the signal interpretable",
-        body: "Used CNN Grad-CAM to support diagnosis of weak creatives before launch. The intent was to make visual attention patterns inspectable alongside the score.",
+        title: "Compare drafts and inspect a visual response",
+        body: "Built a Streamlit app to compare drafts, show scores and reference percentiles, and suggest a budget split for testing. Grad-CAM shows where a separate CNN responded to a thumbnail, alongside platform checks and comparable examples.",
       },
       {
-        title: "Test beyond the training context",
-        body: "The technical CV reports validation on 32,000 scraped Meta and Google ads. Accuracy, lift, error metrics, and deployment details were not provided; no performance guarantee is claimed here.",
+        title: "Evaluate on newer YouTube uploads",
+        body: "Trained on 9,548 eligible YouTube videos and evaluated on 2,387 newer uploads. The saved evaluation reports raw ROC AUC of 0.6154 and calibrated ROC AUC of 0.6094. I also ran the scorer on a separate, unlabeled Meta and Google corpus to compare score distributions across platforms.",
       },
     ],
     tools: [
@@ -368,15 +379,70 @@ export const projects: Project[] = [
       "Machine learning",
     ],
     outcomes: [
-      { value: "13K", label: "YouTube ads used for training" },
-      { value: "32K", label: "Meta & Google ads used for validation" },
-      { value: "3", label: "input types: visuals, titles, metadata" },
+      { value: "9,548", label: "YouTube videos used for training" },
+      { value: "0.615", label: "raw ROC AUC on 2,387 newer YouTube videos" },
+      { value: "29,405", label: "unlabeled Meta and Google creatives scored for comparison" },
     ],
     takeaway:
       "A useful model helps someone make a decision. A score becomes more useful when its signals can be examined.",
     source:
-      "Supplied technical CV, “Pre-Flight Creative Scoring System.” Dataset sizes are reported in the CV; predictive performance was not supplied.",
-    status: "cv",
+      "Training counts and metrics come from the repository’s saved evaluations. The Meta and Google count is from the saved scored corpus.",
+    status: "repository",
+    evidence: {
+      video: {
+        src: "/evidence/creative-scoring/preflight-demo.mp4",
+        poster: "/evidence/creative-scoring/demo-poster.webp",
+        width: 1600,
+        height: 758,
+        description: "Silent screen recording. I select a YouTube brand pool, set the budget and allocation preferences, add titles to three example ads, and start the scoring run.",
+      },
+      images: [
+        {
+          src: "/evidence/creative-scoring/creative-context.webp",
+          alt: "Pre-Flight Creative Scoring interface with platform, brand pool, budget, and allocation controls",
+          width: 1440,
+          height: 682,
+          title: "Set the scoring context",
+          caption: "Choose a platform and brand pool before setting the test budget and allocation preferences.",
+        },
+        {
+          src: "/evidence/creative-scoring/draft-comparison.webp",
+          alt: "Three draft food-delivery ads side by side, with a title field for each and a Score creatives button",
+          width: 1440,
+          height: 682,
+          title: "Compare three draft ads",
+          caption: "Upload example creatives and enter the title for each before requesting scores.",
+        },
+        {
+          src: "/evidence/creative-scoring/score-distribution.webp",
+          alt: "Histogram showing a wider YouTube score distribution and narrower Meta and Google score distributions",
+          width: 1440,
+          height: 880,
+          title: "Score distributions across platforms",
+          caption: "The same scorer produced a narrower range on Meta and Google creatives. Those datasets are unlabeled and used for cross-platform comparison.",
+        },
+        {
+          src: "/evidence/creative-scoring/gradcam-examples.webp",
+          alt: "Grad-CAM overlays highlight areas of eight example YouTube thumbnails that drew a response from the CNN",
+          width: 1300,
+          height: 620,
+          title: "Grad-CAM thumbnail examples",
+          caption: "Warm colors show where the separate CNN responded most strongly. The examples come from the project’s saved visualization.",
+        },
+      ],
+      links: [
+        {
+          href: "https://github.com/rishabtej02-sketch/creative-scoring",
+          label: "Creative Scoring source",
+          detail: "Streamlit application, feature extraction, and model training code.",
+        },
+        {
+          href: "https://github.com/rishabtej02-sketch/creative-scoring/blob/main/data/calibration_report.csv",
+          label: "Saved evaluation results",
+          detail: "Raw and calibrated metrics on held-out YouTube uploads.",
+        },
+      ],
+    },
   },
   {
     slug: "next-step-hr",

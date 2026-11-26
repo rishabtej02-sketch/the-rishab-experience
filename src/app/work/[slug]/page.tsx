@@ -12,6 +12,7 @@ const contextLabels = {
   brief: "Project overview · details in progress",
   cv: "CV-supported case study",
   documented: "Documented internship",
+  repository: "Academic project · source available",
 } satisfies Record<(typeof projects)[number]["status"], string>;
 
 export function generateStaticParams() {
@@ -52,6 +53,21 @@ export default async function CaseStudy({
           </div>
           <h1>{p.title}</h1>
           <p className="case-intro">{p.summary}</p>
+          {p.evidence?.video && (
+            <a className="text-button case-media-link" href="#case-demo">
+              Watch the demo <span aria-hidden="true">↓</span>
+            </a>
+          )}
+          {p.slug === "narrativex" && (
+            <a
+              className="text-button case-media-link"
+              href="https://narrativexmedia.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit the website I built <span aria-hidden="true">↗</span>
+            </a>
+          )}
           <div className="case-facts">
             <div>
               <span className="eyebrow">MY ROLE</span>

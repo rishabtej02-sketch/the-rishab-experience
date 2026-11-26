@@ -14,6 +14,14 @@ test("homepage, process, case studies, and CV downloads work", async ({
   await expect(page.locator("#work .project-card h3").nth(0)).toHaveText("NarrativeX Media");
   await expect(page.locator("#work .project-card h3").nth(1)).toHaveText("Rockwell Industries Limited");
   await expect(page.locator("#work .project-card h3").nth(2)).toHaveText("MetaLabs Services LLP");
+  await expect(page.getByRole("link", { name: "rishabtej02@gmail.com" })).toHaveAttribute(
+    "href",
+    "mailto:rishabtej02@gmail.com",
+  );
+  await expect(page.getByRole("link", { name: "+91 83097 70934" })).toHaveAttribute(
+    "href",
+    "tel:+918309770934",
+  );
   await page.getByRole("tab", { name: "Research", exact: true }).click();
   await expect(page.getByRole("tabpanel")).toContainText("What do we know");
   await page
@@ -37,6 +45,10 @@ test("homepage, process, case studies, and CV downloads work", async ({
     await expect(page.locator("h1")).toBeVisible();
     await expect(page.getByText("THE TAKEAWAY", { exact: true })).toBeVisible();
     if (slug === "narrativex") {
+      await expect(page.getByRole("link", { name: /Visit the website I built/ })).toHaveAttribute(
+        "href",
+        "https://narrativexmedia.in/",
+      );
       await page
         .getByRole("button", { name: "Moderation", exact: true })
         .click();
@@ -62,8 +74,23 @@ test("homepage, process, case studies, and CV downloads work", async ({
     if (slug === "creative-scoring") {
       await page.getByRole("button", { name: "Model", exact: true }).click();
       await expect(page.locator("#system-detail")).toContainText(
-        "LightGBM combines",
+        "chronological YouTube holdout",
       );
+      await page.getByRole("link", { name: /Watch the demo/ }).click();
+      await expect(page).toHaveURL(/#case-demo$/);
+      const evidence = page.getByRole("region", { name: "Work samples & evidence" });
+      await expect(evidence.locator("img")).toHaveCount(4);
+      const video = evidence.locator("video");
+      await expect(video).toBeVisible();
+      const duration = await video.evaluate(async (player) => {
+        if (!(player instanceof HTMLVideoElement)) {
+          throw new Error("Expected a video element");
+        }
+        await player.play();
+        player.pause();
+        return player.duration;
+      });
+      expect(duration).toBeGreaterThan(40);
     }
   }
   await page.goto("/profile");
@@ -107,7 +134,7 @@ test("responsive layouts, keyboard navigation, and reduced motion are accessible
       await expect(page).toHaveURL(/profile/);
     }
   }
-  for (const route of ["/profile", "/work/narrativex", "/work/rockwell", "/work/metalabs", "/work/next-step-hr"]) {
+  for (const route of ["/profile", "/work/narrativex", "/work/rockwell", "/work/metalabs", "/work/creative-scoring", "/work/next-step-hr"]) {
     await page.goto(route);
     await page.screenshot({
       path: `tmp/screenshots/${route.replaceAll("/", "-")}.png`,

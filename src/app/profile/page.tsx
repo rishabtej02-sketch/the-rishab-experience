@@ -38,6 +38,8 @@ export default function Profile() {
           <a href="#cv" className="text-button">
             Download a CV summary ↓
           </a>
+          <a href={`mailto:${person.email}`} className="text-button">Email</a>
+          <a href={`tel:${person.phone}`} className="text-button">Call</a>
         </div>
         <section className="profile-section">
           <h2>Experience</h2>

@@ -1187,6 +1187,10 @@ summary:focus-visible,
   max-width: 650px;
   margin-top: 30px;
 }
+.case-media-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+}
 .case-facts {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1235,6 +1239,24 @@ summary:focus-visible,
 .case-evidence h2 {
   font-size: clamp(1.9rem, 4.3vw, 3.4rem);
   margin-bottom: 1.75rem;
+}
+.evidence-video {
+  max-width: 64rem;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  scroll-margin-top: 6rem;
+}
+.evidence-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #0c1117;
+  border: 1px solid var(--line);
+}
+.evidence-video figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
 }
 .evidence-grid,
 .evidence-links {
@@ -1422,6 +1444,7 @@ summary:focus-visible,
 }
 .profile-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
   align-items: center;
   margin-top: 28px;
