@@ -67,11 +67,9 @@ See [VERIFICATION.md](VERIFICATION.md) for measured results and remaining public
 
 ## Deployment
 
-The Vercel project `the-rishab-experience` exists in the `agency-one` team, with the Next.js framework preset and Node 24. Build command: `npm run build`. Upload source plus the lockfile and `public/`; exclude `tmp/`, `.next/`, `node_modules/`, original CVs, and local reports.
+The Vercel project `the-rishab-experience` in the `agency-one` team builds the connected GitHub repository with the Next.js preset and Node 24. The build command is `npm run build`. Git tracks the source, lockfile, and public assets. The original CVs and local verification artifacts stay in the workspace.
 
-The [protected preview](https://the-rishab-experience-gtdo3gxdt-agency-one.vercel.app) is READY, deployed from source commit `0e18f12` and verified on November 23, 2026. Vercel sign-in may be required. See `VERIFICATION.md` for deployment and hosted-check details. Source control remains local; no GitHub repository is connected.
-
-Deploy future **previews** without a production domain or promotion. With the deployment REST API, omit `target` for a preview and verify that the response target is null. Production publishing requires Rishab’s approval.
+Use the Vercel preview linked from a pull request to review changes. The preview may require Vercel sign-in. Merge an approved release into `main` to deploy to production.
 
 Preview deployments use `noindex, nofollow`. Vercel production deployments allow indexing by default and publish canonical links, robots.txt, and the sitemap for https://the-rishab-experience.vercel.app. Set `PORTFOLIO_INDEXABLE=false` to pause production indexing or `PORTFOLIO_INDEXABLE=true` to simulate production indexing in a local build.
 

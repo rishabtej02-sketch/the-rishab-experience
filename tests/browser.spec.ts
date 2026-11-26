@@ -108,7 +108,7 @@ test("homepage, process, case studies, and CV downloads work", async ({
       await expect(page.getByRole("heading", { name: "Support the driver recruitment pipeline" })).toBeVisible();
       const remit = page.getByRole("region", { name: "Project Coordinator remit" });
       await expect(remit).toContainText("Connecteam");
-      await expect(remit).toContainText("courier systems integration");
+      await expect(remit).toContainText(/courier systems integration/i);
       await expect(remit).toContainText("Search Console");
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
         "href",
